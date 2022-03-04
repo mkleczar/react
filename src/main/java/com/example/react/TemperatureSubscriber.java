@@ -1,12 +1,16 @@
 package com.example.react;
 
-import java.util.concurrent.Flow;
+import java.util.concurrent.Flow.Subscriber;
+import java.util.concurrent.Flow.Subscription;
 
-public class TemperatureSubscriber implements Flow.Subscriber<TemperatureInfo> {
+public class TemperatureSubscriber implements Subscriber<TemperatureInfo> {
+
+    private Subscription subscription;
 
     @Override
-    public void onSubscribe(Flow.Subscription subscription) {
-
+    public void onSubscribe(Subscription subscription) {
+        this.subscription = subscription;
+        subscription.request(1);
     }
 
     @Override
