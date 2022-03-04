@@ -1,8 +1,11 @@
 package com.example.react;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
+@Slf4j
 public class TemperatureSubscriber implements Subscriber<TemperatureInfo> {
 
     private Subscription subscription;
@@ -15,7 +18,8 @@ public class TemperatureSubscriber implements Subscriber<TemperatureInfo> {
 
     @Override
     public void onNext(TemperatureInfo item) {
-
+        log.info("Event: {}", item);
+        subscription.request(1);
     }
 
     @Override
