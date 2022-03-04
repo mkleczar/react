@@ -8,7 +8,7 @@ import java.util.concurrent.Flow.Publisher;
 public class TemperatureReactTest {
 
     @Test
-    public void reactTest() {
+    public void reactTest() throws InterruptedException {
         TemperatureHub temperatureHub = new TemperatureHub();
 
         Publisher<TemperatureInfo> publisher = new TemperaturePublisher(temperatureHub, "London");
@@ -16,10 +16,12 @@ public class TemperatureReactTest {
         Subscriber<TemperatureInfo> subscriber = new TemperatureSubscriber();
 
         publisher.subscribe(subscriber);
+
+        Thread.sleep(1000);
     }
 
     @Test
-    public void reactTwoSubscribersTest() {
+    public void reactTwoSubscribersTest() throws InterruptedException {
         TemperatureHub temperatureHub = new TemperatureHub();
 
         Publisher<TemperatureInfo> publisher = new TemperaturePublisher(temperatureHub, "New York");
@@ -29,5 +31,7 @@ public class TemperatureReactTest {
 
         publisher.subscribe(subscriber1);
         publisher.subscribe(subscriber2);
+
+        Thread.sleep(1000);
     }
 }
