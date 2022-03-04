@@ -12,5 +12,7 @@ public class TemperatureReactTest {
         Publisher<TemperatureInfo> publisher = new TemperaturePublisher("London");
 
         Subscriber<TemperatureInfo> subscriber = new TemperatureSubscriber();
+
+        publisher.subscribe(subscriber);
     }
 }
