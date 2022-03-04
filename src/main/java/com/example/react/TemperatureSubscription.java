@@ -1,5 +1,7 @@
 package com.example.react;
 
+import java.util.stream.IntStream;
+
 import static java.util.concurrent.Flow.Subscriber;
 import static java.util.concurrent.Flow.Subscription;
 
@@ -15,11 +17,10 @@ public class TemperatureSubscription implements Subscription {
 
     @Override
     public void request(long n) {
-
     }
 
     @Override
     public void cancel() {
-
+        subscriber.onComplete();
     }
 }
