@@ -24,11 +24,11 @@ public class TemperatureSubscriber implements Subscriber<TemperatureInfo> {
 
     @Override
     public void onError(Throwable throwable) {
-
+        log.error("Error", throwable);
     }
 
     @Override
     public void onComplete() {
-
+        log.info("Data transmission completed");
     }
 }
